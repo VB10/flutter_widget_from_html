@@ -8,7 +8,7 @@ const kHtml = '''
 <h4>Heading 4</h4>
 <h5>Heading 5</h5>
 <h6>Heading 6</h6>
-
+asdasdasdas
 <p>
   <a name="top"></a>A paragraph with <strong>&lt;strong&gt;</strong>, <em>&lt;em&gt;phasized</em>
   and <span style="color: red">colored</span> text.
@@ -145,7 +145,7 @@ class HelloWorldScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: HtmlWidget(kHtml, webView: true),
+            child: HtmlWidget(kHtml, webView: true,isSelectableText: true,),
           ),
         ),
       );

@@ -109,7 +109,7 @@ class HtmlWidget extends StatefulWidget {
     this.onTapUrl,
     RebuildTriggers rebuildTriggers,
     this.textStyle = const TextStyle(),
-    this.isSelectableText,
+    this.isSelectableText = false,
   })  : assert(html != null),
         _rebuildTriggers = rebuildTriggers,
         super(key: key);

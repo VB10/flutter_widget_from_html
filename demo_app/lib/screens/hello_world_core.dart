@@ -12,6 +12,7 @@ class HelloWorldCoreScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: HtmlWidget(
               enhanced.kHtml,
+              isSelectableText: true,
               onTapUrl: (url) => showDialog(
                 context: context,
                 builder: (_) => AlertDialog(

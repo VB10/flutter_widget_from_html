@@ -88,6 +88,9 @@ class HtmlWidget extends StatefulWidget {
   /// The default styling for text elements.
   final TextStyle textStyle;
 
+  /// The default selectable text options.
+  final bool isSelectableText;
+
   /// Creates a widget that builds Flutter widget tree from html.
   ///
   /// The [html] argument must not be null.
@@ -106,6 +109,7 @@ class HtmlWidget extends StatefulWidget {
     this.onTapUrl,
     RebuildTriggers rebuildTriggers,
     this.textStyle = const TextStyle(),
+    this.isSelectableText,
   })  : assert(html != null),
         _rebuildTriggers = rebuildTriggers,
         super(key: key);
@@ -129,7 +133,7 @@ class _HtmlWidgetState extends State<HtmlWidget> {
   @override
   void initState() {
     super.initState();
-
+    // TODO: this.widget
     _rootTsb = _RootTsb(this);
     _rootMeta = builder.BuildMetadata(null, _rootTsb);
     _wf = widget.factoryBuilder?.call() ?? WidgetFactory();

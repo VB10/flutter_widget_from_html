@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
@@ -30,9 +31,7 @@ class WidgetFactory {
   BuildOp _tagQ;
   TextStyleHtml Function(TextStyleHtml, String) __tsbFontSize;
   TextStyleHtml Function(TextStyleHtml, String) _tsbLineHeight;
-  State _state;
-
-  HtmlWidget get _widget => _state?.widget;
+  HtmlWidget _widget;
 
   /// Builds [Align].
   Widget buildAlign(
@@ -193,6 +192,16 @@ class WidgetFactory {
 
         // TODO: calculate max lines automatically for ellipsis if needed
         // currently it only renders 1 line with ellipsis
+        maxLines: tsh?.maxLines == -1 ? null : tsh?.maxLines,
+      );
+
+  /// Builds [RichText].
+  Widget buildSelectableText(
+          BuildMetadata meta, TextStyleHtml tsh, InlineSpan text) =>
+      SelectableText.rich(
+        TextSpan(children: [text]),
+        textAlign: tsh?.textAlign ?? TextAlign.start,
+        textDirection: tsh?.textDirection ?? TextDirection.ltr,
         maxLines: tsh?.maxLines == -1 ? null : tsh?.maxLines,
       );
 
@@ -751,9 +760,7 @@ class WidgetFactory {
   @mustCallSuper
   void reset(State state) {
     final widget = state?.widget;
-    if (widget is HtmlWidget) {
-      _state = state;
-    }
+    _widget = widget is HtmlWidget ? widget : null;
   }
 
   /// Resolves full URL with [HtmlWidget.baseUrl] if available.

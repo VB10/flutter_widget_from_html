@@ -38,6 +38,9 @@ class HtmlWidget extends core.HtmlWidget {
   /// The value used for the HTTP User-Agent: request header in WebViews.
   final String webViewUserAgent;
 
+  @override
+  final bool isSelectableText;
+
   /// Creates a widget that builds Flutter widget tree from html.
   ///
   /// The [html] argument must not be null.
@@ -61,6 +64,7 @@ class HtmlWidget extends core.HtmlWidget {
     this.webView = false,
     this.webViewDebuggingEnabled = false,
     this.webViewJs = true,
+    this.isSelectableText = false,
     this.webViewMediaPlaybackAlwaysAllow = false,
     this.webViewUserAgent,
   })  : assert(html != null),
@@ -76,6 +80,7 @@ class HtmlWidget extends core.HtmlWidget {
           hyperlinkColor: hyperlinkColor,
           onTapImage: onTapImage,
           onTapUrl: onTapUrl,
+          isSelectableText: isSelectableText,
           rebuildTriggers: core.RebuildTriggers([
             unsupportedWebViewWorkaroundForIssue37,
             webView,
